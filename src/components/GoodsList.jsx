@@ -1,7 +1,7 @@
 import GoodsItem from './GoodsItem';
 
 export default function GoodsList(props) {
-    const { goods = [] } = props;
+    const { goods = [], addToBasket = Function.prototype } = props;
 
     return (
         <div className='goods'>
@@ -10,6 +10,7 @@ export default function GoodsList(props) {
                     <GoodsItem
                         key={item.mainId}
                         {...item}
+                        addToBasket={addToBasket}
                     />
                 ))
             ) : (

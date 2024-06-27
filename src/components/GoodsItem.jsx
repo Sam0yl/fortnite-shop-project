@@ -5,6 +5,7 @@ export default function GoodsItem(props) {
         displayDescription: description,
         price: { regularPrice: price },
         displayAssets: [{ full_background }],
+        addToBasket,
     } = props;
     return (
         <div
@@ -23,8 +24,8 @@ export default function GoodsItem(props) {
             </div>
             <div className='card-action'>
                 <button
-                    className='btn '
-                    // onClick={}
+                    className='btn'
+                    onClick={() => addToBasket({ id, name, price })}
                 >
                     Buy
                 </button>
