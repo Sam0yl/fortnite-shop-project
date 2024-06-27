@@ -5,20 +5,20 @@ export default function BasketItem(props) {
             id={id}
             className='collection-item'
         >
-            {name} x
-            <i
-                className='material-icons basket-quantity'
+            {name} x{' '}
+            <a
+                className='btn-floating btn-small waves-effect waves-light basket-btn'
                 onClick={() => editQuantity('add', id)}
             >
-                add
-            </i>
+                <i className='material-icons'>add</i>
+            </a>
             {quantity}
-            <i
-                className='material-icons basket-quantity'
+            <a
+                className='btn-floating btn-small waves-effect waves-light basket-btn'
                 onClick={() => editQuantity('remove', id)}
             >
-                remove
-            </i>
+                <i className='material-icons'>remove</i>
+            </a>
             = {price * quantity}
             <span className='secondary-content'>
                 <i

@@ -4,12 +4,14 @@ import Preloader from './Preloader';
 import GoodsList from './GoodsList';
 import Cart from './Cart';
 import BasketList from './BasketList';
+import Alert from './Alert';
 
 function Shop() {
     const [goods, setGoods] = useState([]);
     const [loading, setLoading] = useState(true);
     const [order, setOrder] = useState([]);
     const [isBasketShow, setBasketShow] = useState(false);
+    const [alertName, setAlertName] = useState('');
 
     useEffect(function getGoods() {
         fetch(API_URL, {
@@ -45,6 +47,7 @@ function Shop() {
             });
             setOrder(newOrder);
         }
+        setAlertName(item.name);
     }
 
     const removeFromBasket = (id) => {
@@ -77,33 +80,9 @@ function Shop() {
         setOrder(newOrder);
     };
 
-    // const editQuantity = (event, id) => {
-    //     let newOrder = {};
-
-    //     if (event === 'add') {
-    //         newOrder = order.map((item) => {
-    //             if (item.id === id) {
-    //                 const newQuantity = item.quantity + 1;
-    //                 return { ...item, quantity: newQuantity };
-    //             }
-    //             return item;
-    //         });
-    //     }
-
-    //     if (event === 'remove') {
-    //         newOrder = order.map((item) => {
-    //             if (item.id === id) {
-    //                 const newQuantity = item.quantity - 1;
-    //                 return { ...item, quantity: newQuantity };
-    //             }
-    //             return item;
-    // //         });
-    // //     }
-
-    //     setOrder(newOrder);
-    // };
-
-    // const removeQuantity = () => {};
+    const closeAlert = () => {
+        setAlertName('');
+    };
 
     return (
         <main className='container content'>
@@ -125,6 +104,12 @@ function Shop() {
                     handleBasketShow={handleBasketShow}
                     editQuantity={editQuantity}
                     removeFromBasket={removeFromBasket}
+                />
+            )}
+            {alertName && (
+                <Alert
+                    name={alertName}
+                    closeAlert={closeAlert}
                 />
             )}
         </main>

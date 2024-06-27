@@ -30,6 +30,12 @@ export default function BasketList(props) {
             <li className='collection-item active'>
                 Total price: {totalPrice}
             </li>
+            <li className='collection-item secondary-content'>
+                <a className='waves-effect waves-light btn'>
+                    {' '}
+                    <i className='material-icons left'>shopping_basket</i>order
+                </a>
+            </li>
             <i
                 className='material-icons basket-close'
                 onClick={handleBasketShow}
